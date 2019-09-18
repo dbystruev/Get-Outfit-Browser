@@ -37,6 +37,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		69727B0023329058000CE219 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				69A2269923328E1100439DC2 /* ViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		69727B0123329065000CE219 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				69A226A023328E1200439DC2 /* LaunchScreen.storyboard */,
+				69A2269B23328E1100439DC2 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		69A2268923328E1000439DC2 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +73,22 @@
 		69A2269423328E1100439DC2 /* Get Outfit Browser */ = {
 			isa = PBXGroup;
 			children = (
-				69A2269523328E1100439DC2 /* AppDelegate.swift */,
-				69A2269723328E1100439DC2 /* SceneDelegate.swift */,
-				69A2269923328E1100439DC2 /* ViewController.swift */,
-				69A2269B23328E1100439DC2 /* Main.storyboard */,
-				69A2269E23328E1200439DC2 /* Assets.xcassets */,
-				69A226A023328E1200439DC2 /* LaunchScreen.storyboard */,
-				69A226A323328E1200439DC2 /* Info.plist */,
+				69A226A923328E5A00439DC2 /* App */,
+				69727B0123329065000CE219 /* Storyboards */,
+				69727B0023329058000CE219 /* View Controllers */,
 			);
 			path = "Get Outfit Browser";
+			sourceTree = "<group>";
+		};
+		69A226A923328E5A00439DC2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				69A2269523328E1100439DC2 /* AppDelegate.swift */,
+				69A2269723328E1100439DC2 /* SceneDelegate.swift */,
+				69A2269E23328E1200439DC2 /* Assets.xcassets */,
+				69A226A323328E1200439DC2 /* Info.plist */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,7 +310,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
-				INFOPLIST_FILE = "Get Outfit Browser/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Get Outfit Browser/App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,7 +329,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
-				INFOPLIST_FILE = "Get Outfit Browser/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Get Outfit Browser/App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
