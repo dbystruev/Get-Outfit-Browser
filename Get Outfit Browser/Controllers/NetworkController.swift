@@ -6,7 +6,7 @@
 //  Copyright © 2019 Denis Bystruev. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class NetworkController<T: Codable> {
     private let url: URL
@@ -14,6 +14,18 @@ class NetworkController<T: Codable> {
     init?(_ path: String) {
         guard let url = URL(string: path) else { return nil }
         self.url = url
+    }
+    
+    static func getImage(_ imageURL: URL, completion: @escaping (UIImage?, Error?) -> Void) {
+        let task = URLSession.shared.dataTask(with: imageURL) { data, response, error in
+            guard let data = data else {
+                completion(nil, error)
+                return
+            }
+            
+            completion(UIImage(data: data), error)
+        }
+        task.resume()
     }
     
     func getMany(_ parameters: [String: String?] = [:], completion: @escaping ([T]?, Error?) -> Void) {
