@@ -14,13 +14,7 @@ class TableViewController: UITableViewController {
     let offerNetworkController = NetworkController<YMLOffer>("http://server.getoutfit.ru/offers")!
     
     var rootElement: Named?
-    var elements = [Named]() {
-        didSet {
-            #if DEBUG
-            print(#line, #function, elements)
-            #endif
-        }
-    }
+    var elements = [Named]()
 }
 
 // MARK: - UIViewController
@@ -39,8 +33,24 @@ extension TableViewController {
                 return
             }
             self.elements = categories
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            
+            self.offerNetworkController.getMany([
+                "available": "\(true)",
+                "categoryId": self.rootElement?.getId
+            ]) { offers, error in
+                guard let offers = offers else {
+                    #if DEBUG
+                    print(#line, #function, "ERROR:", error?.localizedDescription ?? "nil")
+                    #endif
+                    
+                    return
+                }
+                
+                self.elements += offers
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }
     }
@@ -62,10 +72,14 @@ extension TableViewController {
 // MARK: - UITableViewDelegate
 extension TableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        defer {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
         guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
+        guard let category = elements[selectedIndexPath.row] as? YMLCategory else { return }
         let viewController = storyboard?.instantiateViewController(withIdentifier: "TableViewController")
         guard let tableViewController = viewController as? TableViewController else { return }
-        tableViewController.rootElement = elements[selectedIndexPath.row]
+        tableViewController.rootElement = category
         navigationController?.pushViewController(tableViewController, animated: true)
     }
 }

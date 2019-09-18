@@ -5,6 +5,7 @@
 //  Created by Denis Bystruev on 18/09/2019.
 //  Copyright © 2019 Denis Bystruev. All rights reserved.
 //
+//  See https://yandex.ru/support/partnermarket/elements/categories.html
 
 struct YMLCategory {
     let id: Int

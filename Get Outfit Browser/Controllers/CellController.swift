@@ -16,8 +16,9 @@ class CellController {
     }
     
     func configure(_ cell: UITableViewCell, with offer: YMLOffer) {
-        cell.textLabel?.text = offer.name
-        cell.detailTextLabel?.text = offer.description
+        let prefix = offer.typePrefix?.appending(" ") ?? ""
+        cell.textLabel?.text = "\(prefix)\(offer.vendor) \(offer.model)"
+        cell.detailTextLabel?.text = "\(offer.price) ₽"
     }
     
     func configure(_ cell: UITableViewCell, with element: Codable) {
