@@ -6,8 +6,14 @@
 //  Copyright © 2019 Denis Bystruev. All rights reserved.
 //
 
-struct YMLCategory: Codable {
+struct YMLCategory {
     let id: Int
     let name: String
     let parentId: Int?
+}
+
+extension YMLCategory: Named {
+    var getId: String {
+        return "\(id)"
+    }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct YMLOffer: Codable {
+struct YMLOffer {
     let id: String
     let categoryId: Int
     let description: String
@@ -23,4 +23,10 @@ struct YMLOffer: Codable {
     let url: URL
     let vendor: String
     let vendorCode: String
+}
+
+extension YMLOffer: Named {
+    var getId: String {
+        return id
+    }
 }

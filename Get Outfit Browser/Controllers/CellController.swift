@@ -10,6 +10,7 @@ import UIKit
 
 class CellController {
     func configure(_ cell: UITableViewCell, with category: YMLCategory) {
+        cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text = category.name
         cell.detailTextLabel?.text = "id: \(category.id)"
     }

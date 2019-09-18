@@ -13,7 +13,8 @@ class TableViewController: UITableViewController {
     let categoryNetworkController = NetworkController<YMLCategory>("http://server.getoutfit.ru/categories")!
     let offerNetworkController = NetworkController<YMLOffer>("http://server.getoutfit.ru/offers")!
     
-    var elements = [Codable]() {
+    var rootElement: Named?
+    var elements = [Named]() {
         didSet {
             #if DEBUG
             print(#line, #function, elements)
@@ -27,19 +28,19 @@ extension TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if elements.isEmpty {
-            categoryNetworkController.getMany(["parentId": "nil"]) { categories, error in
-                guard let categories = categories else {
-                    #if DEBUG
-                    print(#line, #function, "ERROR:", error?.localizedDescription ?? "nil")
-                    #endif
-                    
-                    return
-                }
-                self.elements = categories
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+        navigationItem.title = rootElement?.name ?? "Get Outfit"
+        
+        categoryNetworkController.getMany(["parentId": rootElement?.getId]) { categories, error in
+            guard let categories = categories else {
+                #if DEBUG
+                print(#line, #function, "ERROR:", error?.localizedDescription ?? "nil")
+                #endif
+                
+                return
+            }
+            self.elements = categories
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
     }
@@ -55,5 +56,16 @@ extension TableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cellController.configure(cell, with: elements[indexPath.row])
         return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension TableViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
+        let viewController = storyboard?.instantiateViewController(withIdentifier: "TableViewController")
+        guard let tableViewController = viewController as? TableViewController else { return }
+        tableViewController.rootElement = elements[selectedIndexPath.row]
+        navigationController?.pushViewController(tableViewController, animated: true)
     }
 }

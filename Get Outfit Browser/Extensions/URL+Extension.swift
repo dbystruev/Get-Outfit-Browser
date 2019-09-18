@@ -9,10 +9,10 @@
 import Foundation
 
 extension URL {
-    func withQueries(_ queries: [String: String]) -> URL? {
+    func withQueries(_ queries: [String: String?]) -> URL? {
         guard var components = URLComponents(url: self, resolvingAgainstBaseURL: true) else { return nil }
         var queryItems = components.queryItems ?? []
-        queryItems += queries.map { URLQueryItem(name: $0.key, value: $0.value) }
+        queryItems += queries.map { URLQueryItem(name: $0.key, value: $0.value ?? "nil") }
         components.queryItems = queryItems
         return components.url
     }

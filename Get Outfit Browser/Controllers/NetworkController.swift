@@ -16,15 +16,15 @@ class NetworkController<T: Codable> {
         self.url = url
     }
     
-    func getMany(_ parameters: [String: String] = [:], completion: @escaping ([T]?, Error?) -> Void) {
+    func getMany(_ parameters: [String: String?] = [:], completion: @escaping ([T]?, Error?) -> Void) {
         get(parameters, completion: completion)
     }
     
-    func getOne(_ parameters: [String: String] = [:], completion: @escaping (T?, Error?) -> Void) {
+    func getOne(_ parameters: [String: String?] = [:], completion: @escaping (T?, Error?) -> Void) {
         get(parameters, completion: completion)
     }
     
-    func get<U: Codable>(_ parameters: [String: String] = [:], completion: @escaping (U?, Error?) -> Void) {
+    func get<U: Codable>(_ parameters: [String: String?] = [:], completion: @escaping (U?, Error?) -> Void) {
         let requestURL = url.withQueries(parameters) ?? url
         
         #if DEBUG

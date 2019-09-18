@@ -13,6 +13,7 @@
 		69727B452332AD55000CE219 /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69727B442332AD55000CE219 /* CellController.swift */; };
 		69727B472332AEE3000CE219 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69727B462332AEE3000CE219 /* TableViewController.swift */; };
 		69727B4A2332B145000CE219 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69727B492332B145000CE219 /* URL+Extension.swift */; };
+		69727B502332C301000CE219 /* Named.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69727B4F2332C301000CE219 /* Named.swift */; };
 		69A2269623328E1100439DC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A2269523328E1100439DC2 /* AppDelegate.swift */; };
 		69A2269823328E1100439DC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A2269723328E1100439DC2 /* SceneDelegate.swift */; };
 		69A2269D23328E1100439DC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69A2269B23328E1100439DC2 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 		69727B442332AD55000CE219 /* CellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
 		69727B462332AEE3000CE219 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		69727B492332B145000CE219 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		69727B4F2332C301000CE219 /* Named.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Named.swift; sourceTree = "<group>"; };
 		69A2269223328E1100439DC2 /* Get Outfit Browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Get Outfit Browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69A2269523328E1100439DC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69A2269723328E1100439DC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		69727B4C2332BC2C000CE219 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				69727B4F2332C301000CE219 /* Named.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		69A2268923328E1000439DC2 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +123,7 @@
 				69727B0323329400000CE219 /* Controllers */,
 				69727B482332B12E000CE219 /* Extensions */,
 				69727B022332916B000CE219 /* Models */,
+				69727B4C2332BC2C000CE219 /* Protocols */,
 				69727B0123329065000CE219 /* Storyboards */,
 				69727B0023329058000CE219 /* View Controllers */,
 			);
@@ -202,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69727B452332AD55000CE219 /* CellController.swift in Sources */,
+				69727B502332C301000CE219 /* Named.swift in Sources */,
 				69727B4A2332B145000CE219 /* URL+Extension.swift in Sources */,
 				69727B0523329422000CE219 /* NetworkController.swift in Sources */,
 				69727B472332AEE3000CE219 /* TableViewController.swift in Sources */,
