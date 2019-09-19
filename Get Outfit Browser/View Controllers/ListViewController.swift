@@ -17,16 +17,16 @@ class ListViewController: UITableViewController {
     var elements = [Named]()
 }
 
-// MARK: - UIViewController
+// MARK: - UI
 extension ListViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    func updateTitle() {
         let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
         label.text = rootElement?.name ?? "Get Outfit"
         navigationItem.titleView = label
-        
+    }
+    
+    func updateUI() {
         categoryNetworkController.getMany(["parentId": rootElement?.getId]) { categories, error in
             guard let categories = categories else {
                 #if DEBUG
@@ -51,11 +51,31 @@ extension ListViewController {
                 
                 self.elements += offers
                 
+                guard categories.count != 1 || 0 < offers.count else {
+                    #if DEBUG
+                    let category = categories[0]
+                    print(#line, #function, "Skipping id \(category.getId): \(category.name)")
+                    #endif
+                    
+                    self.rootElement = self.elements.first
+                    self.updateUI()
+                    return
+                }
+                
                 DispatchQueue.main.async {
+                    self.updateTitle()
                     self.tableView.reloadData()
                 }
             }
         }
+    }
+}
+
+// MARK: - UIViewController
+extension ListViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateUI()
     }
 }
 
