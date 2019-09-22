@@ -13,7 +13,7 @@ class CellController {
     func configure(_ cell: UITableViewCell, in tableView: UITableView, with category: YMLCategory) {
         cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text = category.name
-        cell.detailTextLabel?.text = "id: \(category.id)"
+        cell.detailTextLabel?.text = "Category id: \(category.getId)"
     }
     
     func configure(_ cell: UITableViewCell, in tableView: UITableView, with offer: YMLOffer) {

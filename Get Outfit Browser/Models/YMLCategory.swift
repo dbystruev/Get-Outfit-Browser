@@ -11,6 +11,14 @@ struct YMLCategory {
     let id: Int
     let name: String
     let parentId: Int?
+    
+    var getParentId: String {
+        guard let parentId = parentId else {
+            return "none"
+        }
+        
+        return "\(parentId)"
+    }
 }
 
 extension YMLCategory: Named {
